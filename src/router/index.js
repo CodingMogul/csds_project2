@@ -1,30 +1,35 @@
-import Vue from "vue";
-import App from "../App.vue";
-import Router from "vue-router";
-import Toast from "vue-toastification";
-import "vue-toastification/dist/index.css";
-/*
-const routerOptions = [
-  { path: "/", component: "Landing" },
-  { path: "/add", component: "Add" },
-  { path: "/edit", component: "Edit" },
-  { path: "*", component: "NotFound" } 
+import { createRouter, createWebHistory } from "vue-router";
+import Landing from "../components/Landing.vue";
+import Add from "../components/Add.vue";
+import Edit from "../components/Edit.vue";
+import NotFound from "../components/NotFound.vue";
+
+const routes = [
+  {
+    path: "/",
+    name: "Landing",
+    component: Landing,
+  },
+  {
+    path: "/add",
+    name: "Add",
+    component: Add,
+  },
+  {
+    path: "/edit",
+    name: "Edit",
+    component: Edit,
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "NotFound",
+    component: NotFound,
+  },
 ];
 
-
-const routes = routerOptions.map((route) => {
-  return {
-    ...route,
-    component: () => import(`../components/${route.component}.vue`)
-  };
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
 });
-*/
 
-Vue.use(Router);
-Vue.use(Toast);
-export default new Router({
-  mode: "history",
-  components: { App },
-  template: "<App/>"
-  //routes
-});
+export default router;
