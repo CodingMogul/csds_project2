@@ -15,4 +15,8 @@ export default defineConfig({
       usePolling: true,
     },
   },
+  optimizeDeps: {
+    include: ["vuetify"],
+    exclude: ["webpack-plugin-vuetify"],
+  },
 });
